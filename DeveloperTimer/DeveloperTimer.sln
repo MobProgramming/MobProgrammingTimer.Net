@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeveloperTimer", "DeveloperTimer.csproj", "{B83C3701-BDDA-41BF-8BAC-F4C301961407}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeveloperTimer.Tests", "..\DeveloperTimer.Tests\DeveloperTimer.Tests.csproj", "{4543241E-0C42-4D71-A9D2-7A6E54818E14}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B83C3701-BDDA-41BF-8BAC-F4C301961407}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B83C3701-BDDA-41BF-8BAC-F4C301961407}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B83C3701-BDDA-41BF-8BAC-F4C301961407}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B83C3701-BDDA-41BF-8BAC-F4C301961407}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4543241E-0C42-4D71-A9D2-7A6E54818E14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4543241E-0C42-4D71-A9D2-7A6E54818E14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4543241E-0C42-4D71-A9D2-7A6E54818E14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4543241E-0C42-4D71-A9D2-7A6E54818E14}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
