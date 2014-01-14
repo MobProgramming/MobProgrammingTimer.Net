@@ -73,6 +73,9 @@
       <Name>DeveloperTimer</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Forms\MainWindowTests.TestMethod1.Microsoft_Windows_7_Enterprise.approved.png" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
