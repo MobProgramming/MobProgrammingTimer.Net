@@ -8,7 +8,7 @@ namespace DeveloperTimer.Tests.Forms
     public class MainWindowTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestMainWindow()
         {
             var window = new MainWindow();
             WpfApprovals.Verify(window);
