@@ -19,14 +19,17 @@ namespace DeveloperTimer
     /// </summary>
     public partial class CountDownWindow : Window
     {
+        private CountDownViewModel vm;
+
         public CountDownWindow()
         {
             InitializeComponent();
         }
 
-        public CountDownWindow(int minutes, int seconds)
+        public CountDownWindow(int minutes, int seconds):this()
         {
-            
+            vm = new CountDownViewModel();
+            this.DataContext = vm;
         }
     }
 }

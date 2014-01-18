@@ -68,6 +68,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CountDownViewModel.cs" />
     <Compile Include="CountDownWindow.xaml.cs">
       <DependentUpon>CountDownWindow.xaml</DependentUpon>
     </Compile>
