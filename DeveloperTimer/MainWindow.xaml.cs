@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using ApprovalUtilities.Utilities;
+using DeveloperTimer.Annotations;
 
 namespace DeveloperTimer
 {
@@ -20,9 +12,69 @@ namespace DeveloperTimer
     /// </summary>
     public partial class MainWindow : Window
     {
+        private TimerViewModel vm;
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        public MainWindow(int minutes, int seconds)
+            : this()
+        {
+            vm = new TimerViewModel();
+            DataContext = vm;
+            vm.Minutes = minutes;
+            vm.Seconds = seconds;
+        }
+
+        public DateTime Time { get; set; }
+    }
+
+    public class TimerViewModel : INotifyPropertyChanged
+    {
+        private int seconds;
+        private int minutes;
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public int Minutes
+        {
+            get { return minutes; }
+            set
+            {
+                if (value == minutes) return;
+                minutes = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string DisplayMinutes
+        {
+            get { return "{0:00}".FormatWith(minutes); }
+        }
+
+        public string DisplaySeconds
+        {
+            get { return "{0:00}".FormatWith(seconds); }
+        }
+
+
+        public int Seconds
+        {
+            get { return seconds; }
+            set
+            {
+                if (value == seconds) return;
+                seconds = value;
+                OnPropertyChanged();
+            }
+        }
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

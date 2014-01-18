@@ -1,17 +1,15 @@
-﻿using System;
-using ApprovalTests.Wpf;
-using DeveloperTimer.Models;
+﻿using ApprovalTests.Wpf;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DeveloperTimer.Tests.Forms
 {
     [TestClass]
-    public class MainWindowTests
+    public class CountDownWindowTests
     {
         [TestMethod]
-        public void TestMainWindow()
+        public void TestPassiveCountDownWindow()
         {
-            var window = new MainWindow(3, 14); 
+            var window = new CountDownWindow(3, 14); 
             WpfApprovals.Verify(window);
         }
     }
