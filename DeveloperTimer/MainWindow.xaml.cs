@@ -1,16 +1,13 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Windows;
-using ApprovalUtilities.Utilities;
-using DeveloperTimer.Annotations;
+using System.Windows.Input;
+using DeveloperTimer.Models;
 
 namespace DeveloperTimer
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         private TimerViewModel vm;
 
@@ -31,50 +28,25 @@ namespace DeveloperTimer
         public DateTime Time { get; set; }
     }
 
-    public class TimerViewModel : INotifyPropertyChanged
+    public class RelayCommand : ICommand
     {
-        private int seconds;
-        private int minutes;
-        public event PropertyChangedEventHandler PropertyChanged;
+        private readonly Action action;
 
-        public int Minutes
+        public RelayCommand(Action action)
         {
-            get { return minutes; }
-            set
-            {
-                if (value == minutes) return;
-                minutes = value;
-                OnPropertyChanged();
-            }
+            this.action = action;
         }
 
-        public string DisplayMinutes
+        public bool CanExecute(object parameter)
         {
-            get { return "{0:00}".FormatWith(minutes); }
+            return true;
         }
 
-        public string DisplaySeconds
+        public void Execute(object parameter)
         {
-            get { return "{0:00}".FormatWith(seconds); }
+            action();
         }
 
-
-        public int Seconds
-        {
-            get { return seconds; }
-            set
-            {
-                if (value == seconds) return;
-                seconds = value;
-                OnPropertyChanged();
-            }
-        }
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
-        }
+        public event EventHandler CanExecuteChanged;
     }
 }

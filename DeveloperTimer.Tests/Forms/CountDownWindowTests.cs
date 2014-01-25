@@ -26,6 +26,15 @@ namespace DeveloperTimer.Tests.Forms
             var window = new CountDownWindow(3, 14, loaderTime);
             WpfApprovals.Verify(window);
         }
+
+        [TestMethod]
+        public void TestPassiveCountDownWindowCountsDownMultipleTimes()
+        {
+            var times = new Stack<DateTime>( new[]{ DateTime.Parse("6:21PM January 1, 2000"), DateTime.Parse("6:20PM January 1, 2000") , DateTime.Parse("6:19PM January 1, 2000") });
+            ILoader<DateTime> loaderTime = new GenericLoader<DateTime>(() => times.Count > 1? times.Pop():times.Peek());
+            var window = new CountDownWindow(3, 14, loaderTime);
+            WpfApprovals.Verify(window);
+        }
     }
 
     public class GenericLoader<T> : ILoader<T>

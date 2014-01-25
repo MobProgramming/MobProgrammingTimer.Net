@@ -9,7 +9,7 @@
             <TextBlock FontSize="150" FontFamily="Arial Black">:</TextBlock>
             <TextBlock FontSize="150" FontFamily="Arial Black" x:Name="Seconds" Text="{Binding DisplaySeconds}"></TextBlock>
         </StackPanel>
-        <Button Content="Start" FontSize="45"  x:Name="btnStart" Margin="179,395,532,0" VerticalAlignment="Top" Width="243" Height="68" />
+        <Button Content="Start" FontSize="45"  x:Name="btnStart" Margin="179,395,532,0" VerticalAlignment="Top" Width="243" Height="68" Command="{Binding StartTimer Path=.}"  />
 
     </Grid>
 </Window>
