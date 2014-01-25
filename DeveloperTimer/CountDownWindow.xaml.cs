@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ApprovalUtilities.Persistence;
 
 namespace DeveloperTimer
 {
@@ -26,9 +27,9 @@ namespace DeveloperTimer
             InitializeComponent();
         }
 
-        public CountDownWindow(int minutes, int seconds):this()
+        public CountDownWindow(int minutes, int seconds, ILoader<DateTime> loaderTime):this()
         {
-            vm = new CountDownViewModel();
+            vm = new CountDownViewModel(minutes, seconds, loaderTime);
             this.DataContext = vm;
         }
     }
