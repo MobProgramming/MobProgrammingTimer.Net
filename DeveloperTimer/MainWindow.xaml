@@ -11,8 +11,6 @@
             </Label.Background>
         </Label>
         <Button Content="Reset Timer" Height="23" HorizontalAlignment="Right" Margin="0,0,12,50" Name="btnReset" VerticalAlignment="Bottom" Width="113" Click="btnReset_Click" />
-        <Label Content="Currently Active Windo" Height="28" HorizontalAlignment="Left" Margin="268,92,0,0" Name="lblCurrentlyActiveWindow" VerticalAlignment="Top" />
-        <CheckBox Content="Enable Outlook Pause" Height="21" Margin="117,166,0,0" Name="chkOutlookPause" VerticalAlignment="Top" IsChecked="False" HorizontalAlignment="Left" Width="149" />
         <TextBox Height="23" HorizontalAlignment="Left" Margin="12,164,0,0" Name="txtHours" VerticalAlignment="Top" Width="26" Text="0" />
         <TextBox Height="23" HorizontalAlignment="Left" Margin="44,164,0,0" Name="txtMinutes" VerticalAlignment="Top" Width="26" Text="0" />
         <TextBox Height="23" HorizontalAlignment="Left" Margin="76,164,0,0" Name="txtSeconds" VerticalAlignment="Top" Width="26" Text="0" />

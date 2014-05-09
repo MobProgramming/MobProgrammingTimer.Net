@@ -17,7 +17,7 @@ namespace DeveloperTimer.Tests
         public void ConstructorTest()
         {
             var timeController = CreateTimeControllerParts(() => touDate).Item1;
-            var mainWindow = BuildMainWindow(null, timeController);
+            var mainWindow = BuildMainWindow(timeController);
             WpfApprovals.Verify(mainWindow);
         }
 
@@ -26,7 +26,7 @@ namespace DeveloperTimer.Tests
         {
             var timeController = CreateTimeControllerParts(() => touDate).Item1;
 
-            var mainWindow = BuildMainWindow(null, timeController);
+            var mainWindow = BuildMainWindow(timeController);
             mainWindow.ResetTimer();
             WpfApprovals.Verify(mainWindow);
         }
@@ -37,7 +37,7 @@ namespace DeveloperTimer.Tests
             var timeControllerParts = CreateTimeControllerParts(() => touDate);
             var timeController = timeControllerParts.Item1;
 
-            var mainWindow = BuildMainWindow(GetDefaultWindowTitleFinder(), timeController);
+            var mainWindow = BuildMainWindow(timeController);
             mainWindow.ResetTimer();
 
             timeControllerParts.Item2[0](timeController, null);
@@ -50,12 +50,10 @@ namespace DeveloperTimer.Tests
             var dateTimes = GetInitialDateTimes();
             dateTimes.Enqueue(touDate.AddMinutes(2));
 
-            var windowTitleFinder = GetDefaultWindowTitleFinder();
-
             var timeControllerParts = CreateTimeControllerParts(dateTimes.Dequeue);
             var timeController = timeControllerParts.Item1;
 
-            var mainWindow = BuildMainWindow(windowTitleFinder, timeController);
+            var mainWindow = BuildMainWindow(timeController);
             mainWindow.ResetTimer();
             timeControllerParts.Item2[0](timeController, null);
 
@@ -68,12 +66,10 @@ namespace DeveloperTimer.Tests
             var dateTimes = GetInitialDateTimes(); 
             dateTimes.Enqueue(touDate.AddMinutes(17).AddSeconds(22));
 
-            var windowTitleFinder = GetDefaultWindowTitleFinder();
-
             var timeControllerParts = CreateTimeControllerParts(dateTimes.Dequeue);
             var timeController = timeControllerParts.Item1;
 
-            var mainWindow = BuildMainWindow(windowTitleFinder, timeController);
+            var mainWindow = BuildMainWindow(timeController);
             mainWindow.ResetTimer();
             timeControllerParts.Item2[0](timeController, null);
 
@@ -101,16 +97,9 @@ namespace DeveloperTimer.Tests
             return dateTimes;
         }
 
-        private static IGetWindowTitle GetDefaultWindowTitleFinder(string processname = "Window Finder version 3.14")
+        private static MainWindow BuildMainWindow(ITimeController timeController)
         {
-            var windowTitleFinder = MockRepository.GenerateStub<IGetWindowTitle>();
-            windowTitleFinder.Stub(wf => wf.GetProcessExeName()).Return(processname);
-            return windowTitleFinder;
-        }
-
-        private static MainWindow BuildMainWindow(IGetWindowTitle defaultWindowTitleFinder, ITimeController timeController)
-        {
-            var mainWindow = new MainWindow(defaultWindowTitleFinder, timeController, IgnoreQueryUserBeforeResetTimer(), () => false);
+            var mainWindow = new MainWindow(timeController, IgnoreQueryUserBeforeResetTimer(), () => false);
             return mainWindow;
         }
 

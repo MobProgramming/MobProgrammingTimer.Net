@@ -21,24 +21,22 @@ namespace DeveloperTimer
 
         DateTime endTime;
         int developerIndex = -1;
-        private readonly IGetWindowTitle windowSearcher;
 
         private readonly Func<string, MessageBoxResult> queryUserBeforeResetTimer;
         private readonly Func<bool> isTopMost;
         private readonly ITimeController timeController;
-        private ItemRing<string> nameRing;
+        private readonly ItemRing<string> nameRing;
 
         public MainWindow()
-            : this(new GetWindowTitle(), new TimeController(500), msg => MessageBox.Show(msg, "Diligence", MessageBoxButton.YesNo), ()=> true)
+            : this(new TimeController(500), msg => MessageBox.Show(msg, "Diligence", MessageBoxButton.YesNo), ()=> true)
         {
         }
 
-        public MainWindow(IGetWindowTitle windowTitleFinder, ITimeController timeController, Func<string, MessageBoxResult> queryUserBeforeResetTimer, Func<bool> isTopMost)
+        public MainWindow(ITimeController timeController, Func<string, MessageBoxResult> queryUserBeforeResetTimer, Func<bool> isTopMost)
         {
             this.queryUserBeforeResetTimer = queryUserBeforeResetTimer;
             this.isTopMost = isTopMost;
             this.timeController = timeController;
-            windowSearcher = windowTitleFinder;
 
             nameRing = new ItemRing<string>();
 
@@ -104,13 +102,6 @@ namespace DeveloperTimer
 
         private void UpdateUI(Label lblTime)
         {
-            var titleString = windowSearcher.GetProcessExeName();
-            lblCurrentlyActiveWindow.Content = titleString;
-            if (ShouldPause(titleString))
-            {
-                endTime = endTime.Add(new TimeSpan(5000000));
-            }
-
             var span = endTime - timeController.Now;
             lblTime.Content = String.Format("h:{0} m:{1} s:{2}", span.Hours, span.Minutes, span.Seconds);
 
@@ -125,11 +116,6 @@ namespace DeveloperTimer
             {
                 MaximizeWindow();
             }
-        }
-
-        private bool ShouldPause(string titleString)
-        {
-            return titleString.StartsWith("OUTLOOK.EXE") && chkOutlookPause.IsChecked.GetValueOrDefault();
         }
 
         private void btnReset_Click(object sender, RoutedEventArgs e)
