@@ -20,8 +20,6 @@ namespace DeveloperTimer
         public delegate void UpdateUxDelegate(Label lblTime);
 
         DateTime endTime;
-        int developerIndex = -1;
-
         private readonly Func<string, MessageBoxResult> queryUserBeforeResetTimer;
         private readonly Func<bool> isTopMost;
         private readonly ITimeController timeController;
