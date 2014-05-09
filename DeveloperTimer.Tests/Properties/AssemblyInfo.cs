@@ -1,11 +1,12 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using ApprovalTests.Reporters;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-using ApprovalTests.Reporters;
+using Rhino.Mocks.Constraints;
 
 [assembly: AssemblyTitle("DeveloperTimer.Tests")]
 [assembly: AssemblyDescription("")]
@@ -15,7 +16,7 @@ using ApprovalTests.Reporters;
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: UseReporter(typeof(TortoiseDiffReporter), typeof(ClipboardReporter))]
+[assembly: UseReporter(typeof(DiffReporter),typeof(ClipboardReporter))]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -23,7 +24,7 @@ using ApprovalTests.Reporters;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("2346f5be-e41b-452e-8f55-fa0a0ec7bb5b")]
+[assembly: Guid("fafdceeb-bcc0-4ed0-85c1-a249a42b6d09")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4543241E-0C42-4D71-A9D2-7A6E54818E14}</ProjectGuid>
+    <ProjectGuid>{7D5785C4-1DA3-4F37-A6C1-7FAD9267D353}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DeveloperTimer.Tests</RootNamespace>
     <AssemblyName>DeveloperTimer.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -16,6 +16,7 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,6 +26,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,14 +38,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ApprovalTests">
-      <HintPath>..\DeveloperTimer\packages\ApprovalTests.3.0.5\lib\net40\ApprovalTests.dll</HintPath>
+      <HintPath>..\packages\ApprovalTests.3.0.5\lib\net40\ApprovalTests.dll</HintPath>
     </Reference>
     <Reference Include="ApprovalUtilities">
-      <HintPath>..\DeveloperTimer\packages\ApprovalUtilities.3.0.5\lib\net35\ApprovalUtilities.dll</HintPath>
+      <HintPath>..\packages\ApprovalUtilities.3.0.5\lib\net35\ApprovalUtilities.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Expression.WpfPlatform, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86" />
+    <Reference Include="ObjectApproval">
+      <HintPath>..\packages\ObjectApproval.0.1.4\Lib\NET40\ObjectApproval.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xaml" />
     <Reference Include="WindowsBase" />
@@ -61,21 +68,71 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Forms\CountDownWindowTests.cs" />
-    <Compile Include="Forms\MainWindowTests.cs" />
+    <Compile Include="CaptureExpression.cs" />
+    <Compile Include="Explortitory.cs" />
+    <Compile Include="ItemRingShould.cs" />
+    <Compile Include="MockExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="EnumerableRandomizerShould.cs" />
+    <Compile Include="TestingTools.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DeveloperTimer\DeveloperTimer.csproj">
+      <Project>{1d3c4a09-b12a-411f-935a-8f7072175a81}</Project>
+      <Name>DeveloperTimer</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DeveloperTimer\DeveloperTimer.csproj">
-      <Project>{b83c3701-bdda-41bf-8bac-f4c301961407}</Project>
-      <Name>DeveloperTimer</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Forms\MainWindowTests.TestMainWindow.Microsoft_Windows_7_Enterprise.approved.png" />
+    <Content Include="EnumerableRandomizerShould.ShouldRandomizeEnumerable.approved.txt">
+      <DependentUpon>EnumerableRandomizerShould.cs</DependentUpon>
+    </Content>
+    <Content Include="Explortitory.ConstructorTest.Microsoft_Windows_7_Enterprise.approved.png" />
+    <Content Include="Explortitory.ConstructorTest.Microsoft_Windows_8.1_Pro.approved.png">
+      <DependentUpon>Explortitory.cs</DependentUpon>
+    </Content>
+    <Content Include="Explortitory.ProgressTimerTest.Microsoft_Windows_7_Enterprise.approved.png" />
+    <Content Include="Explortitory.ProgressTimerTest.Microsoft_Windows_8.1_Pro.approved.png">
+      <DependentUpon>Explortitory.cs</DependentUpon>
+    </Content>
+    <Content Include="Explortitory.ProgressTimerToEnd.Microsoft_Windows_7_Enterprise.approved.png" />
+    <Content Include="Explortitory.ProgressTimerToEnd.Microsoft_Windows_8.1_Pro.approved.png">
+      <DependentUpon>Explortitory.cs</DependentUpon>
+    </Content>
+    <Content Include="Explortitory.ProgressTimerToNewTimeTest.Microsoft_Windows_7_Enterprise.approved.png" />
+    <Content Include="Explortitory.ProgressTimerToNewTimeTest.Microsoft_Windows_8.1_Pro.approved.png">
+      <DependentUpon>Explortitory.cs</DependentUpon>
+    </Content>
+    <Content Include="Explortitory.ResetTimerTest.Microsoft_Windows_7_Enterprise.approved.png" />
+    <Content Include="Explortitory.ResetTimerTest.Microsoft_Windows_8.1_Pro.approved.png">
+      <DependentUpon>Explortitory.cs</DependentUpon>
+    </Content>
+    <Content Include="ItemRingShould.ShouldAddNewItemToEndOfList.approved.txt">
+      <DependentUpon>ItemRingShould.cs</DependentUpon>
+    </Content>
+    <Content Include="ItemRingShould.ShouldChangeListIfFirstItemIsMovedDown.approved.txt">
+      <DependentUpon>ItemRingShould.cs</DependentUpon>
+    </Content>
+    <Content Include="ItemRingShould.ShouldChangeListIfLastItemIsMovedUp.approved.txt">
+      <DependentUpon>ItemRingShould.cs</DependentUpon>
+    </Content>
+    <Content Include="ItemRingShould.ShouldCorrectlyWrapOnOnverFlowCausedByMovingDown.approved.txt">
+      <DependentUpon>ItemRingShould.cs</DependentUpon>
+    </Content>
+    <Content Include="ItemRingShould.ShouldCorrectlyWrapOnOverFlowCausedByMovingUp.approved.txt">
+      <DependentUpon>ItemRingShould.cs</DependentUpon>
+    </Content>
+    <Content Include="ItemRingShould.ShouldNotChangeListAfterIncrement.approved.txt">
+      <DependentUpon>ItemRingShould.cs</DependentUpon>
+    </Content>
+    <Content Include="ItemRingShould.ShouldTellWhatsInTheRing.approved.txt">
+      <DependentUpon>ItemRingShould.cs</DependentUpon>
+    </Content>
+    <Content Include="Resources\plop.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
