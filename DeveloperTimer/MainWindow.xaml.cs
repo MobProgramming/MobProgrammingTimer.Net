@@ -321,7 +321,7 @@ namespace DeveloperTimer
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var iconPath = GetLocalPath() + @"Resources\plop.ico";
+            var iconPath = GetLocalPath() + @"Resources\appointment-new-3.ico";
             Icon = new BitmapImage(new Uri(iconPath));
         }
 

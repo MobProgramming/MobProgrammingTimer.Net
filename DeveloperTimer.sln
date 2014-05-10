@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeveloperTimer", "DeveloperTimer\DeveloperTimer.csproj", "{1D3C4A09-B12A-411F-935A-8F7072175A81}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeveloperTimer.Main", "DeveloperTimer\DeveloperTimer.Main.csproj", "{1D3C4A09-B12A-411F-935A-8F7072175A81}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeveloperTimer.Tests", "DeveloperTimer.Tests\DeveloperTimer.Tests.csproj", "{7D5785C4-1DA3-4F37-A6C1-7FAD9267D353}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DeveloperTimer", "DeveloperTimerInstaller\DeveloperTimerInstaller.vdproj", "{EE4762C1-9EB1-439C-B5EA-EAC0EF62A35E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,12 @@ Global
 		{7D5785C4-1DA3-4F37-A6C1-7FAD9267D353}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{7D5785C4-1DA3-4F37-A6C1-7FAD9267D353}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{7D5785C4-1DA3-4F37-A6C1-7FAD9267D353}.Release|x86.ActiveCfg = Release|Any CPU
+		{EE4762C1-9EB1-439C-B5EA-EAC0EF62A35E}.Debug|Any CPU.ActiveCfg = Debug
+		{EE4762C1-9EB1-439C-B5EA-EAC0EF62A35E}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{EE4762C1-9EB1-439C-B5EA-EAC0EF62A35E}.Debug|x86.ActiveCfg = Debug
+		{EE4762C1-9EB1-439C-B5EA-EAC0EF62A35E}.Release|Any CPU.ActiveCfg = Release
+		{EE4762C1-9EB1-439C-B5EA-EAC0EF62A35E}.Release|Mixed Platforms.ActiveCfg = Release
+		{EE4762C1-9EB1-439C-B5EA-EAC0EF62A35E}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

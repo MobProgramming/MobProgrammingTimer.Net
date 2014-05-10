@@ -63,7 +63,7 @@
     <ManifestKeyFile>DeveloperTimer_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>false</GenerateManifests>
+    <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
@@ -163,10 +163,10 @@
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Names.txt">
+    <Content Include="Names.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <Content Include="Resources\plop.ico">
+    </Content>
+    <Content Include="Resources\appointment-new-3.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

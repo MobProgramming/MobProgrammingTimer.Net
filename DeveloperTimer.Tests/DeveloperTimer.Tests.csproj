@@ -77,9 +77,9 @@
     <Compile Include="TestingTools.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DeveloperTimer\DeveloperTimer.csproj">
+    <ProjectReference Include="..\DeveloperTimer\DeveloperTimer.Main.csproj">
       <Project>{1d3c4a09-b12a-411f-935a-8f7072175a81}</Project>
-      <Name>DeveloperTimer</Name>
+      <Name>DeveloperTimer.Main</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
