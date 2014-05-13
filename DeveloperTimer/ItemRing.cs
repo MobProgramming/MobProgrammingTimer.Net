@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,6 +7,7 @@ namespace DeveloperTimer
 {
     public class ItemRing<T> : IList<T>
     {
+        public event EventHandler<EventArgs> ItemsChanged;
         private readonly List<T> items;
         private int currentIndex;
 
@@ -76,11 +78,13 @@ namespace DeveloperTimer
         public void Add(T item)
         {
             items.Add(item);
+            OnItemsChanged();
         }
 
         public void Clear()
         {
             items.Clear();
+            OnItemsChanged();
         }
 
         public bool Contains(T item)
@@ -105,8 +109,10 @@ namespace DeveloperTimer
             {
                 currentIndex = 0;
             }
-
-            return items.Remove(item);
+            
+            var remove = items.Remove(item);
+            OnItemsChanged();
+            return remove;
         }
 
         public int Count { get { return items.Count; } }
@@ -125,6 +131,7 @@ namespace DeveloperTimer
         public void Insert(int index, T item)
         {
             items.Insert(index, item);
+            OnItemsChanged();
         }
 
         public void RemoveAt(int index)
@@ -135,7 +142,11 @@ namespace DeveloperTimer
         public T this[int index]
         {
             get { return items[index]; }
-            set { items[index] = value; }
+            set
+            {
+                items[index] = value;
+                OnItemsChanged();
+            }
         }
 
         public void MoveDown(T item)
@@ -147,6 +158,7 @@ namespace DeveloperTimer
 
             this[goalIndex] = item;
             this[startIndex] = holding;
+            OnItemsChanged();
         }
 
         public void MoveUp(T item)
@@ -158,6 +170,14 @@ namespace DeveloperTimer
 
             this[goalIndex] = item;
             this[startIndex] = holding;
+            OnItemsChanged();
+        }
+
+        private void OnItemsChanged()
+        {
+            if(ItemsChanged == null)
+                return;
+            ItemsChanged(this, EventArgs.Empty);
         }
     }
 }

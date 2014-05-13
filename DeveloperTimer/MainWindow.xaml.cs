@@ -26,18 +26,17 @@ namespace DeveloperTimer
         private readonly ItemRing<string> nameRing;
 
         public MainWindow()
-            : this(new TimeController(500), msg => MessageBox.Show(msg, "Diligence", MessageBoxButton.YesNo), ()=> true)
+            : this(new TimeController(500), msg => MessageBox.Show(msg, "Diligence", MessageBoxButton.YesNo), ()=> true, new ItemRing<string>())
         {
         }
 
-        public MainWindow(ITimeController timeController, Func<string, MessageBoxResult> queryUserBeforeResetTimer, Func<bool> isTopMost)
+        public MainWindow(ITimeController timeController, Func<string, MessageBoxResult> queryUserBeforeResetTimer, Func<bool> isTopMost, ItemRing<string> itemRing)
         {
             this.queryUserBeforeResetTimer = queryUserBeforeResetTimer;
             this.isTopMost = isTopMost;
             this.timeController = timeController;
 
-            nameRing = new ItemRing<string>();
-
+            nameRing = itemRing;
             // After all initializations
             InitializeComponent();
             sOpacitySlider.Value = 1;
@@ -50,6 +49,8 @@ namespace DeveloperTimer
             txtSeconds.Text = timeController.DelaySpan.Seconds.ToString();
 
             MinimizeWindow();
+
+            nameRing.ItemsChanged += (o, e) => UpdateUxNames();
         }
 
         private IEnumerable<string> LoadDefaultNames()
@@ -228,7 +229,6 @@ namespace DeveloperTimer
         private void AddNameToQueue(string name)
         {
             nameRing.Add(name);
-            UpdateUxNames();
         }
 
         private void UpdateUxNames()
@@ -250,7 +250,6 @@ namespace DeveloperTimer
         {
             var current = nameRing.Current;
             nameRing.MoveUp(nameRing[lbNames.SelectedIndex]);
-            UpdateUxNames();
             SetNextDeveloperMessage();
         }
 
@@ -258,7 +257,6 @@ namespace DeveloperTimer
         {
             var current = nameRing.Current;
             nameRing.MoveDown(nameRing[lbNames.SelectedIndex]);
-            UpdateUxNames();
             SetNextDeveloperMessage();
         }
 
@@ -282,7 +280,6 @@ namespace DeveloperTimer
                 nameRing.Add(defaultName);
             }
 
-            UpdateUxNames();
             SetNextDeveloperMessage();
         }
 

@@ -17,7 +17,7 @@ namespace DeveloperTimer.Tests
         public void ConstructorTest()
         {
             var timeController = CreateTimeControllerParts(() => touDate).Item1;
-            var mainWindow = BuildMainWindow(timeController);
+            var mainWindow = BuildMainWindow(timeController, new ItemRing<string>());
             WpfApprovals.Verify(mainWindow);
         }
 
@@ -26,7 +26,7 @@ namespace DeveloperTimer.Tests
         {
             var timeController = CreateTimeControllerParts(() => touDate).Item1;
 
-            var mainWindow = BuildMainWindow(timeController);
+            var mainWindow = BuildMainWindow(timeController, new ItemRing<string>());
             mainWindow.ResetTimer();
             WpfApprovals.Verify(mainWindow);
         }
@@ -37,7 +37,7 @@ namespace DeveloperTimer.Tests
             var timeControllerParts = CreateTimeControllerParts(() => touDate);
             var timeController = timeControllerParts.Item1;
 
-            var mainWindow = BuildMainWindow(timeController);
+            var mainWindow = BuildMainWindow(timeController, new ItemRing<string>());
             mainWindow.ResetTimer();
 
             timeControllerParts.Item2[0](timeController, null);
@@ -53,8 +53,25 @@ namespace DeveloperTimer.Tests
             var timeControllerParts = CreateTimeControllerParts(dateTimes.Dequeue);
             var timeController = timeControllerParts.Item1;
 
-            var mainWindow = BuildMainWindow(timeController);
+            var mainWindow = BuildMainWindow(timeController, new ItemRing<string>());
             mainWindow.ResetTimer();
+            timeControllerParts.Item2[0](timeController, null);
+
+            WpfApprovals.Verify(mainWindow);
+        }
+
+        [TestMethod]
+        public void TestListDisplayUpdatesWhenListUpdates()
+        {
+            var dateTimes = GetInitialDateTimes();
+            dateTimes.Enqueue(touDate.AddMinutes(2));
+
+            var timeControllerParts = CreateTimeControllerParts(dateTimes.Dequeue);
+            var timeController = timeControllerParts.Item1;
+
+            var itemRing = new ItemRing<string>(){"One", "Two", "Three"};
+            var mainWindow = BuildMainWindow(timeController, itemRing);
+            itemRing.RemoveAt(1);
             timeControllerParts.Item2[0](timeController, null);
 
             WpfApprovals.Verify(mainWindow);
@@ -69,7 +86,7 @@ namespace DeveloperTimer.Tests
             var timeControllerParts = CreateTimeControllerParts(dateTimes.Dequeue);
             var timeController = timeControllerParts.Item1;
 
-            var mainWindow = BuildMainWindow(timeController);
+            var mainWindow = BuildMainWindow(timeController, new ItemRing<string>());
             mainWindow.ResetTimer();
             timeControllerParts.Item2[0](timeController, null);
 
@@ -97,9 +114,9 @@ namespace DeveloperTimer.Tests
             return dateTimes;
         }
 
-        private static MainWindow BuildMainWindow(ITimeController timeController)
+        private static MainWindow BuildMainWindow(ITimeController timeController, ItemRing<string> itemRing)
         {
-            var mainWindow = new MainWindow(timeController, IgnoreQueryUserBeforeResetTimer(), () => false);
+            var mainWindow = new MainWindow(timeController, IgnoreQueryUserBeforeResetTimer(), () => false, itemRing);
             return mainWindow;
         }
 
