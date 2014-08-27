@@ -227,6 +227,7 @@ namespace DeveloperTimer
 
         private void AddNameToQueue(string name)
         {
+            txtAddName.Text = "";
             nameRing.Add(name);
             UpdateUxNames();
         }
