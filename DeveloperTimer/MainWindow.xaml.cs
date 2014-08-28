@@ -123,10 +123,10 @@ namespace DeveloperTimer
 
         public void ResetTimer()
         {
-            if (queryUserBeforeResetTimer("Is there a card on the board for your current task???") != MessageBoxResult.Yes)
-            {
-                return;
-            }
+            //if (queryUserBeforeResetTimer("Is there a card on the board for your current task???") != MessageBoxResult.Yes)
+            //{
+            //    return;
+            //}
 
             int hours;
             int minutes;
@@ -329,6 +329,12 @@ namespace DeveloperTimer
         private string GetLocalPath()
         {
             return new DirectoryInfo(Path.GetDirectoryName(GetType().Assembly.Location)).FullName + "\\";
+        }
+
+        private void btnSkip_Click(object sender, RoutedEventArgs e)
+        {
+            IncrementDeveloperIndex();
+            ResetTimer();
         }
     }
 }
