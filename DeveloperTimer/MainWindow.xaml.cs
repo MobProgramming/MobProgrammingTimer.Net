@@ -45,7 +45,6 @@ namespace DeveloperTimer
 
             endTime = this.timeController.Now;
 
-            txtHours.Text = timeController.DelaySpan.Hours.ToString();
             txtMinutes.Text = timeController.DelaySpan.Minutes.ToString();
             txtSeconds.Text = timeController.DelaySpan.Seconds.ToString();
 
@@ -101,7 +100,7 @@ namespace DeveloperTimer
         private void UpdateUI(Label lblTime)
         {
             var span = endTime - timeController.Now;
-            lblTime.Content = String.Format("h:{0} m:{1} s:{2}", span.Hours, span.Minutes, span.Seconds);
+            lblTime.Content = String.Format("{0}:{1:00}", span.Minutes, span.Seconds);
 
             if (span > new TimeSpan(0, 0, 0))
             {
@@ -128,13 +127,12 @@ namespace DeveloperTimer
             //    return;
             //}
 
-            int hours;
             int minutes;
             int seconds;
-            if (Int32.TryParse(txtHours.Text, out hours) && Int32.TryParse(txtMinutes.Text, out minutes) &&
+            if (Int32.TryParse(txtMinutes.Text, out minutes) &&
                 Int32.TryParse(txtSeconds.Text, out seconds))
             {
-                timeController.DelaySpan = new TimeSpan(hours, minutes, seconds);
+                timeController.DelaySpan = new TimeSpan(0, minutes, seconds);
             }
 
             endTime = timeController.Now + timeController.DelaySpan;
@@ -145,7 +143,9 @@ namespace DeveloperTimer
         {
             gLayoutGrid.Opacity = 0.35;
             gUserQueue.IsEnabled = false;
-            gUserQueue.Visibility = Visibility.Hidden;
+
+            SwitchToHeadsUp();
+
             WindowStyle = WindowStyle.None;
             WindowState = WindowState.Normal;
             Topmost = isTopMost();
@@ -157,11 +157,18 @@ namespace DeveloperTimer
             HideWindow();
         }
 
+        private void SwitchToHeadsUp()
+        {
+            gUserQueue.Visibility = Visibility.Collapsed;
+            lblNextDeveloper.Visibility = Visibility.Collapsed;
+            gridNextButtons.Visibility = Visibility.Collapsed;
+        }
+
         private void HideWindow()
         {
             var value = 255 * sOpacitySlider.Value;
             var textValue = String.Format("#{0:x2}FFFFFF", (int)value);
-            BrushConverter bc = new BrushConverter();
+            var bc = new BrushConverter();
             this.Background = (Brush)bc.ConvertFrom(textValue);
             this.Activate();
         }
@@ -170,7 +177,9 @@ namespace DeveloperTimer
         {
             gLayoutGrid.Opacity = 1;
             gUserQueue.IsEnabled = true;
-            gUserQueue.Visibility = Visibility.Visible;
+
+            SwitchToFullView();
+
             Topmost = isTopMost();
             WindowStyle = WindowStyle.None;
             WindowState = WindowState.Normal;
@@ -183,6 +192,13 @@ namespace DeveloperTimer
 
             IncrementDeveloperIndex();
             SetNextDeveloperMessage();
+        }
+
+        private void SwitchToFullView()
+        {
+            gUserQueue.Visibility = Visibility.Visible;
+            lblNextDeveloper.Visibility = Visibility.Visible;
+            gridNextButtons.Visibility = Visibility.Visible;
         }
 
         private void ShowWindow()

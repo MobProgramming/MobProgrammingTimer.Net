@@ -8,11 +8,21 @@
             <Setter Property="Height" Value="80"/>
             <Setter Property="FontSize" Value="32"/>
         </Style>
+
+        <Style TargetType="Control" x:Key="default">
+            <Setter Property="Margin" Value="10,5"/>
+        </Style>
+        <Style TargetType="TextBox" BasedOn="{StaticResource default}">
+        </Style>
+        <Style TargetType="Button" BasedOn="{StaticResource default}">
+        </Style>
+        <Style TargetType="ListBox" BasedOn="{StaticResource default}">
+        </Style>
     </Window.Resources>
     <Grid Name="gLayoutGrid" Opacity="1">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -20,38 +30,14 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" Name="lblTime" FontSize="64" Content="h:00 m:00 s:00" />
 
-        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" >
-            <Label Content="Current Developer" Name="lblCurrentDeveloper" />
-            <Label Content="Next Developer" Name="lblNextDeveloperName" />
-            <Slider x:Name="sOpacitySlider" Width="230" TickFrequency=".01" IsSnapToTickEnabled="true"
-                    TickPlacement="none" Value="{Binding Path=From, Mode=Default, UpdateSourceTrigger=PropertyChanged}"
-                    Maximum="1" Minimum="0" ValueChanged="sOpacitySlider_ValueChanged" 
-                    HorizontalAlignment="Left"/>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Name="txtHours" Text="0" Width="25" />
-                <TextBox Name="txtMinutes" Text="0" Width="25" />
-                <TextBox Name="txtSeconds" Text="0" Width="25"  />
-            </StackPanel>
-        </StackPanel>
+        <Label Grid.Row="0" Grid.Column="1" Name="lblTime" FontSize="64" Content="h:00 m:00 s:00" />
 
-        <Label Content="Switch It Up!" FontSize="64" Name="lblNextDeveloper" Grid.Row="3" />
-        <Grid Grid.Row="2" Grid.Column="0" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Button Content="Start turn" Name="btnReset" Grid.Column="0" Click="btnReset_Click" Style="{StaticResource big}"  />
-            <Button Content="Skip person" Name="btnSkip" Grid.Column="1" Click="btnSkip_Click" Style="{StaticResource big}"/>
-        </Grid>
-        <Grid Name="gUserQueue" Grid.Column="1">
+        <Grid Name="gUserQueue" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Width="300">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
+
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -59,11 +45,37 @@
             </Grid.ColumnDefinitions>
             <TextBox Name="txtAddName" KeyUp="txtAddName_KeyUp" Grid.Row="0" Grid.Column="0" />
             <Button Content="Add Name" Name="btnAddName" Click="btnAddName_Click" Grid.Row="0" Grid.Column="1"/>
-            <ListBox Height="182"  Name="lbNames"  Grid.Row="1" Grid.RowSpan="4"/>
-            <Button Content="Move Up" Name="btnMoveNameUp" Click="btnMoveNameUp_Click" Grid.Row="1" Grid.Column="1"/>
-            <Button Content="Move Down" Name="btnMoveNameDown" Click="btnMoveNameDown_Click" Grid.Row="2" Grid.Column="1"/>
-            <Button Content="RemoveName" Name="btnRemoveName" Click="btnRemoveName_Click" Grid.Row="3" Grid.Column="1"/>
-            <Button Content="Add All Dev"   Name="btnAddAllDev" Click="btnAddAllDev_Click" Grid.Row="4" Grid.Column="1"/>
+            <ListBox Height="182" VerticalAlignment="Top" Name="lbNames"  Grid.Row="1" />
+            <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1">
+                <Button Content="Move Up" Height="Auto" Name="btnMoveNameUp" Click="btnMoveNameUp_Click" />
+                <Button Content="Move Down" Height="Auto" Name="btnMoveNameDown" Click="btnMoveNameDown_Click" />
+                <Button Content="RemoveName" Height="Auto" Name="btnRemoveName" Click="btnRemoveName_Click" />
+                <Button Content="Add All Dev" Height="Auto" Name="btnAddAllDev" Click="btnAddAllDev_Click" />
+            </StackPanel>
         </Grid>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" >
+            <Label Content="Current Developer" Name="lblCurrentDeveloper" />
+            <Label Content="Next Developer" Name="lblNextDeveloperName" />
+            <Slider x:Name="sOpacitySlider" Width="230" TickFrequency=".01" IsSnapToTickEnabled="true"
+                    TickPlacement="none" Value="{Binding Path=From, Mode=Default, UpdateSourceTrigger=PropertyChanged}"
+                    Maximum="1" Minimum="0" ValueChanged="sOpacitySlider_ValueChanged" 
+                    HorizontalAlignment="Left"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="txtMinutes" Text="0" Width="25" />
+                <TextBox Name="txtSeconds" Text="0" Width="25"  />
+            </StackPanel>
+        </StackPanel>
+        
+        <Grid Name="gridNextButtons" Grid.Row="2" Grid.Column="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button Content="Start turn" Name="btnReset" Grid.Column="0" Click="btnReset_Click" Style="{StaticResource big}"  />
+            <Button Content="Skip person" Name="btnSkip" Grid.Column="1" Click="btnSkip_Click" Style="{StaticResource big}"/>
+        </Grid>
+
+        <Label Grid.Row="3" Grid.Column="1" Content="Switch It Up!" FontSize="64" Name="lblNextDeveloper" />
     </Grid>
 </Window>
