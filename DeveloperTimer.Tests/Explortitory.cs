@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Timers;
 using System.Windows;
+using ApprovalTests.Reporters;
 using ApprovalTests.Wpf;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rhino.Mocks;
@@ -9,6 +10,7 @@ using Rhino.Mocks;
 namespace DeveloperTimer.Tests
 {
     [TestClass]
+    [UseReporter(typeof(AllFailingTestsClipboardReporter))]
     public class Explortitory
     {
         private readonly DateTime touDate = DateTime.Parse("6/28/3185 3:07:18AM");
