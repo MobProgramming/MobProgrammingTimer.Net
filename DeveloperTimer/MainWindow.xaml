@@ -64,6 +64,15 @@
             <StackPanel Orientation="Horizontal">
                 <TextBox Name="txtMinutes" Text="0" Width="25" />
                 <TextBox Name="txtSeconds" Text="0" Width="25"  />
+                <Grid Name="gridRunningButtons">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Pause" Name="btnPause" Grid.Column="0" Click="btnPause_Click"  />
+                    <Button Content="Skip person" Name="btnRunningSkip" Grid.Column="1" Click="btnSkip_Click"/>
+                </Grid>
+                
             </StackPanel>
         </StackPanel>
         

@@ -281,7 +281,7 @@ namespace DeveloperTimer
             nameRing.RemoveAt(lbNames.SelectedIndex);
             if (nameRing.Any())
             {
-                lbNames.SelectedIndex = priorSelectedIndex%lbNames.Items.Count;
+                lbNames.SelectedIndex = priorSelectedIndex % lbNames.Items.Count;
             }
             SetNextDeveloperMessage();
         }
@@ -349,6 +349,17 @@ namespace DeveloperTimer
             IncrementDeveloperIndex();
             SetNextDeveloperMessage();
             ResetTimer();
+        }
+
+        private void btnPause_Click(object sender, RoutedEventArgs e)
+        {
+            EndSession();
+        }
+
+        private void EndSession()
+        {
+            endTime = DateTime.Now;
+            UpdateUI(lblTime);
         }
     }
 }
