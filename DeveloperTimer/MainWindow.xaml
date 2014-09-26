@@ -69,8 +69,11 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <Button Content="Pause" Name="btnPause" Grid.Column="0" Click="btnPause_Click"  />
-                    <Button Content="Skip person" Name="btnRunningSkip" Grid.Column="1" Click="btnSkip_Click"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Button Content="Pause" Name="btnPause" Grid.Column="0" Grid.Row="0" Click="btnPause_Click"  />
+                    <Button Content="Skip person" Name="btnRunningSkip" Grid.Column="1" Grid.Row="0" Click="btnSkip_Click"/>
                 </Grid>
                 
             </StackPanel>
@@ -81,8 +84,13 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Button Content="Start turn" Name="btnReset" Grid.Column="0" Click="btnReset_Click" Style="{StaticResource big}"  />
-            <Button Content="Skip person" Name="btnSkip" Grid.Column="1" Click="btnSkip_Click" Style="{StaticResource big}"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.ColumnSpan="2" FontSize="34">Hold ALT key to interact with buttons when running.</Label>
+            <Button Content="Start turn" Name="btnReset" Grid.Column="0" Grid.Row="1" Click="btnReset_Click" Style="{StaticResource big}"  />
+            <Button Content="Skip person" Name="btnSkip" Grid.Column="1" Grid.Row="1" Click="btnSkip_Click" Style="{StaticResource big}"/>
         </Grid>
 
         <Label Grid.Row="3" Grid.Column="1" Content="Switch It Up!" FontSize="64" Name="lblNextDeveloper" />
