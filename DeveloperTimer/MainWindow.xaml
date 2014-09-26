@@ -49,7 +49,7 @@
             <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1">
                 <Button Content="Move Up" Height="Auto" Name="btnMoveNameUp" Click="btnMoveNameUp_Click" />
                 <Button Content="Move Down" Height="Auto" Name="btnMoveNameDown" Click="btnMoveNameDown_Click" />
-                <Button Content="RemoveName" Height="Auto" Name="btnRemoveName" Click="btnRemoveName_Click" />
+                <Button Content="Remove Name" Height="Auto" Name="btnRemoveName" Click="btnRemoveName_Click" />
                 <Button Content="Add All Dev" Height="Auto" Name="btnAddAllDev" Click="btnAddAllDev_Click" />
             </StackPanel>
         </Grid>
