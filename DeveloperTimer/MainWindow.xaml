@@ -2,30 +2,80 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Super Duper Developer Timer!!!!!" Height="536" Width="954" Topmost="True" Opacity="1" AllowsTransparency="True" WindowStyle="None" Background="#78FFFFFF" MouseEnter="Window_MouseEnter" MouseLeave="Window_MouseLeave" Loaded="Window_Loaded">
-    <Grid Name="gLayoutGrid" Opacity="1">
-        <Label Content="Switch It Up!" FontSize="64" Height="89" Margin="12,281,144,0" Name="lblNextDeveloper" VerticalAlignment="Top">
-        </Label>
-        <Label Height="89" Name="lblTime" VerticalAlignment="Top" FontSize="64" Content="h:00 m:00 s:00">
-            <Label.Background>
-                <SolidColorBrush />
-            </Label.Background>
-        </Label>
-        <Button Content="Reset Timer" Height="23" HorizontalAlignment="Right" Margin="0,0,12,50" Name="btnReset" VerticalAlignment="Bottom" Width="113" Click="btnReset_Click" />
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="12,164,0,0" Name="txtHours" VerticalAlignment="Top" Width="26" Text="0" />
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="44,164,0,0" Name="txtMinutes" VerticalAlignment="Top" Width="26" Text="0" />
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="76,164,0,0" Name="txtSeconds" VerticalAlignment="Top" Width="26" Text="0" />
-        <Slider      x:Name="sOpacitySlider"      Width="230"      Height="21"      TickFrequency=".01"      IsSnapToTickEnabled="true"      TickPlacement="none"      Value="{Binding Path=From, Mode=Default, UpdateSourceTrigger=PropertyChanged}"      Maximum="1"      Minimum="0" Margin="12,129,0,0" ValueChanged="sOpacitySlider_ValueChanged" Background="White" VerticalAlignment="Top" HorizontalAlignment="Left" />
-        <Grid Height="233" Margin="0,12,8,0" Name="gUserQueue" VerticalAlignment="Top" HorizontalAlignment="Right" Width="302">
-            <TextBox Height="23" HorizontalAlignment="Left" Margin="8,10,0,0" Name="txtAddName" VerticalAlignment="Top" Width="167" KeyUp="txtAddName_KeyUp" />
-            <Button Content="Add Name" Height="23" HorizontalAlignment="Left" Margin="185,9,0,0" Name="btnAddName" VerticalAlignment="Top" Width="101" Click="btnAddName_Click" />
-            <ListBox Height="182" HorizontalAlignment="Left" Margin="8,39,0,0" Name="lbNames" VerticalAlignment="Top" Width="167" />
-            <Button Content="Move Up" Height="23" HorizontalAlignment="Left" Margin="185,52,0,0" Name="btnMoveNameUp" VerticalAlignment="Top" Width="101" Click="btnMoveNameUp_Click" />
-            <Button Content="Move Down" Height="23" HorizontalAlignment="Left" Margin="185,81,0,0" Name="btnMoveNameDown" VerticalAlignment="Top" Width="101" Click="btnMoveNameDown_Click" />
-            <Button Content="Add All Dev" Height="23" HorizontalAlignment="Left" Margin="185,198,0,0" Name="btnAddAllDev" VerticalAlignment="Top" Width="101" Click="btnAddAllDev_Click" />
+    <Window.Resources>
+        <Style x:Key="big" TargetType="Button">
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="Height" Value="80"/>
+            <Setter Property="FontSize" Value="32"/>
+        </Style>
 
-            <Button Content="RemoveName" Height="23" Margin="0,130,14,0" Name="btnRemoveName" VerticalAlignment="Top" HorizontalAlignment="Right" Width="103" Click="btnRemoveName_Click" />
+        <Style TargetType="Control" x:Key="default">
+            <Setter Property="Margin" Value="10,5"/>
+        </Style>
+        <Style TargetType="TextBox" BasedOn="{StaticResource default}">
+        </Style>
+        <Style TargetType="Button" BasedOn="{StaticResource default}">
+        </Style>
+        <Style TargetType="ListBox" BasedOn="{StaticResource default}">
+        </Style>
+    </Window.Resources>
+    <Grid Name="gLayoutGrid" Opacity="1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="1" Name="lblTime" FontSize="64" Content="h:00 m:00 s:00" />
+
+        <Grid Name="gUserQueue" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Width="300">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBox Name="txtAddName" KeyUp="txtAddName_KeyUp" Grid.Row="0" Grid.Column="0" />
+            <Button Content="Add Name" Name="btnAddName" Click="btnAddName_Click" Grid.Row="0" Grid.Column="1"/>
+            <ListBox Height="182" VerticalAlignment="Top" Name="lbNames"  Grid.Row="1" />
+            <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1">
+                <Button Content="Move Up" Height="Auto" Name="btnMoveNameUp" Click="btnMoveNameUp_Click" />
+                <Button Content="Move Down" Height="Auto" Name="btnMoveNameDown" Click="btnMoveNameDown_Click" />
+                <Button Content="RemoveName" Height="Auto" Name="btnRemoveName" Click="btnRemoveName_Click" />
+                <Button Content="Add All Dev" Height="Auto" Name="btnAddAllDev" Click="btnAddAllDev_Click" />
+            </StackPanel>
         </Grid>
-        <Label Content="Current Developer" Height="28" HorizontalAlignment="Left" Margin="12,79,0,0" Name="lblCurrentDeveloper" VerticalAlignment="Top" />
-        <Label Content="Next Developer" Height="28" HorizontalAlignment="Left" Margin="12,101,0,0" x:Name="lblNextDeveloperName" VerticalAlignment="Top" />
+
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" >
+            <Label Content="Current Developer" Name="lblCurrentDeveloper" />
+            <Label Content="Next Developer" Name="lblNextDeveloperName" />
+            <Slider x:Name="sOpacitySlider" Width="230" TickFrequency=".01" IsSnapToTickEnabled="true"
+                    TickPlacement="none" Value="{Binding Path=From, Mode=Default, UpdateSourceTrigger=PropertyChanged}"
+                    Maximum="1" Minimum="0" ValueChanged="sOpacitySlider_ValueChanged" 
+                    HorizontalAlignment="Left"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="txtMinutes" Text="0" Width="25" />
+                <TextBox Name="txtSeconds" Text="0" Width="25"  />
+            </StackPanel>
+        </StackPanel>
+        
+        <Grid Name="gridNextButtons" Grid.Row="2" Grid.Column="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button Content="Start turn" Name="btnReset" Grid.Column="0" Click="btnReset_Click" Style="{StaticResource big}"  />
+            <Button Content="Skip person" Name="btnSkip" Grid.Column="1" Click="btnSkip_Click" Style="{StaticResource big}"/>
+        </Grid>
+
+        <Label Grid.Row="3" Grid.Column="1" Content="Switch It Up!" FontSize="64" Name="lblNextDeveloper" />
     </Grid>
 </Window>
