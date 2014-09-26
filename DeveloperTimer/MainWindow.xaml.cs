@@ -158,6 +158,7 @@ namespace DeveloperTimer
             gUserQueue.Visibility = Visibility.Collapsed;
             lblNextDeveloper.Visibility = Visibility.Collapsed;
             gridNextButtons.Visibility = Visibility.Collapsed;
+            gridRunningButtons.Visibility = Visibility.Visible;
         }
 
         private void HideWindow()
@@ -195,6 +196,7 @@ namespace DeveloperTimer
             gUserQueue.Visibility = Visibility.Visible;
             lblNextDeveloper.Visibility = Visibility.Visible;
             gridNextButtons.Visibility = Visibility.Visible;
+            gridRunningButtons.Visibility = Visibility.Collapsed;
         }
 
         private void ShowWindow()
