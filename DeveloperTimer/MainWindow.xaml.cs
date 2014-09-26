@@ -26,7 +26,7 @@ namespace DeveloperTimer
         private readonly ItemRing<string> nameRing;
 
         public MainWindow()
-            : this(new TimeController(500), msg => MessageBox.Show(msg, "Diligence", MessageBoxButton.YesNo), ()=> true, new ItemRing<string>())
+            : this(new TimeController(500), msg => MessageBox.Show(msg, "Diligence", MessageBoxButton.YesNo), () => true, new ItemRing<string>())
         {
         }
 
@@ -245,6 +245,7 @@ namespace DeveloperTimer
         private void AddNameToQueue(string name)
         {
             txtAddName.Text = "";
+            if (String.IsNullOrWhiteSpace(name)) return;
             nameRing.Add(name);
         }
 
@@ -258,8 +259,8 @@ namespace DeveloperTimer
                 lbNames.Items.Add(name);
             }
 
-            lbNames.SelectedIndex = string.IsNullOrWhiteSpace(current) 
-                ? 0 
+            lbNames.SelectedIndex = string.IsNullOrWhiteSpace(current)
+                ? 0
                 : nameRing.IndexOf(current);
         }
 
@@ -280,9 +281,13 @@ namespace DeveloperTimer
         private void btnRemoveName_Click(object sender, RoutedEventArgs e)
         {
             if (lbNames.Items.Count <= 0) return;
+            var priorSelectedIndex = lbNames.SelectedIndex;
 
             nameRing.RemoveAt(lbNames.SelectedIndex);
-
+            if (nameRing.Any())
+            {
+                lbNames.SelectedIndex = priorSelectedIndex%lbNames.Items.Count;
+            }
             SetNextDeveloperMessage();
         }
 
