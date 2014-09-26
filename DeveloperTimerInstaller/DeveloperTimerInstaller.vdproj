@@ -297,20 +297,6 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A7E4E1CF339041E380DD6DD1CB7603F9"
-            {
-            "Name" = "8:DeveloperTimer"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_1905D9A6406C4E1BB91802F6C8F975D2"
-            "Folder" = "8:_41FB22E20CA74D9C92374AE890D6390D"
-            "WorkingFolder" = "8:_EFEC7B68F51342B695A9019B02E72230"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
         }
         "UserInterface"
         {
