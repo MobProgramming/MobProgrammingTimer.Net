@@ -123,11 +123,6 @@ namespace DeveloperTimer
 
         public void ResetTimer()
         {
-            //if (queryUserBeforeResetTimer("Is there a card on the board for your current task???") != MessageBoxResult.Yes)
-            //{
-            //    return;
-            //}
-
             int minutes;
             int seconds;
             if (Int32.TryParse(txtMinutes.Text, out minutes) &&
@@ -352,6 +347,7 @@ namespace DeveloperTimer
         private void btnSkip_Click(object sender, RoutedEventArgs e)
         {
             IncrementDeveloperIndex();
+            SetNextDeveloperMessage();
             ResetTimer();
         }
     }
