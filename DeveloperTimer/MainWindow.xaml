@@ -57,12 +57,16 @@
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" >
             <Label Content="Current Developer" Name="lblCurrentDeveloper" />
             <Label Content="Next Developer" Name="lblNextDeveloperName" />
-            <Slider x:Name="sOpacitySlider" Width="230" TickFrequency=".01" IsSnapToTickEnabled="true"
+            <Grid>
+            <Slider x:Name="sOpacitySlider" Width="130" TickFrequency=".01" IsSnapToTickEnabled="true"
                     TickPlacement="none" Value="{Binding Path=From, Mode=Default, UpdateSourceTrigger=PropertyChanged}"
                     Maximum="1" Minimum="0" ValueChanged="sOpacitySlider_ValueChanged" 
                     HorizontalAlignment="Left"/>
+            </Grid>
             <StackPanel Orientation="Horizontal">
+                <Label>Minutes </Label>
                 <TextBox Name="txtMinutes" Text="0" Width="25" />
+                <Label>Seconds </Label>
                 <TextBox Name="txtSeconds" Text="0" Width="25"  />
                 <Grid Name="gridRunningButtons">
                     <Grid.ColumnDefinitions>
