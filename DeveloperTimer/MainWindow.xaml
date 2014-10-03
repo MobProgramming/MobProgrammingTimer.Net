@@ -19,7 +19,7 @@
         <Style TargetType="ListBox" BasedOn="{StaticResource default}">
         </Style>
     </Window.Resources>
-    <Border BorderThickness="2" Padding="3 3 3 25" >
+    <Border BorderThickness="2" Padding="25 25 25 50" Name="outerBorder">
     <Grid Name="gLayoutGrid" Opacity="1">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />

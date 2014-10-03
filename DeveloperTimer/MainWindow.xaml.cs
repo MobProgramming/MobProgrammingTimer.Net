@@ -24,6 +24,7 @@ namespace DeveloperTimer
         private readonly Func<bool> isTopMost;
         private readonly ITimeController timeController;
         private readonly ItemRing<string> nameRing;
+        private readonly Thickness MinimizedThickness = new Thickness(3,3,3,25);
 
         public MainWindow()
             : this(new TimeController(500), msg => MessageBox.Show(msg, "Diligence", MessageBoxButton.YesNo), () => true, new ItemRing<string>())
@@ -137,6 +138,8 @@ namespace DeveloperTimer
 
         private void MinimizeWindow()
         {
+            outerBorder.Padding = MinimizedThickness;
+
             gLayoutGrid.Opacity = 0.35;
             gUserQueue.IsEnabled = false;
 
@@ -172,6 +175,7 @@ namespace DeveloperTimer
 
         private void MaximizeWindow()
         {
+            outerBorder.Padding = new Thickness(25, 25, 25, 50);
             gLayoutGrid.Opacity = 1;
             gUserQueue.IsEnabled = true;
 
