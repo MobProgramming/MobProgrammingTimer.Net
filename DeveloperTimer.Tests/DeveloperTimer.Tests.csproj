@@ -71,7 +71,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CaptureExpression.cs" />
-    <Compile Include="Explortitory.cs" />
+    <Compile Include="UiTests.cs" />
     <Compile Include="ItemRingShould.cs" />
     <Compile Include="MockExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,26 +91,31 @@
     <Content Include="EnumerableRandomizerShould.ShouldRandomizeEnumerable.approved.txt">
       <DependentUpon>EnumerableRandomizerShould.cs</DependentUpon>
     </Content>
-    <Content Include="Explortitory.ConstructorTest.Microsoft_Windows_7_Enterprise.approved.png" />
-    <Content Include="Explortitory.ConstructorTest.Microsoft_Windows_8.1_Pro.approved.png">
-      <DependentUpon>Explortitory.cs</DependentUpon>
-    </Content>
-    <Content Include="Explortitory.ProgressTimerTest.Microsoft_Windows_7_Enterprise.approved.png" />
-    <Content Include="Explortitory.ProgressTimerTest.Microsoft_Windows_8.1_Pro.approved.png">
-      <DependentUpon>Explortitory.cs</DependentUpon>
-    </Content>
-    <Content Include="Explortitory.ProgressTimerToEnd.Microsoft_Windows_7_Enterprise.approved.png" />
-    <Content Include="Explortitory.ProgressTimerToEnd.Microsoft_Windows_8.1_Pro.approved.png">
-      <DependentUpon>Explortitory.cs</DependentUpon>
-    </Content>
-    <Content Include="Explortitory.ProgressTimerToNewTimeTest.Microsoft_Windows_7_Enterprise.approved.png" />
-    <Content Include="Explortitory.ProgressTimerToNewTimeTest.Microsoft_Windows_8.1_Pro.approved.png">
-      <DependentUpon>Explortitory.cs</DependentUpon>
-    </Content>
-    <Content Include="Explortitory.ResetTimerTest.Microsoft_Windows_7_Enterprise.approved.png" />
-    <Content Include="Explortitory.ResetTimerTest.Microsoft_Windows_8.1_Pro.approved.png">
-      <DependentUpon>Explortitory.cs</DependentUpon>
-    </Content>
+    <Content Include="UiTests.ConstructorTest.Microsoft_Windows_7_Enterprise.received.png" />
+    <Content Include="UiTests.ConstructorTest.Microsoft_Windows_7_Professional.approved.png" />
+    <Content Include="UiTests.ProgressTimerTest.Microsoft_Windows_7_Enterprise.received.png" />
+    <Content Include="UiTests.ProgressTimerTest.Microsoft_Windows_7_Professional.approved.png" />
+    <Content Include="UiTests.ProgressTimerToEnd.Microsoft_Windows_7_Enterprise.received.png" />
+    <Content Include="UiTests.ProgressTimerToEnd.Microsoft_Windows_7_Professional.approved.png" />
+    <Content Include="UiTests.ProgressTimerToEnd.Windows_7.approved.png" />
+    <Content Include="UiTests.ProgressTimerToNewTimeTest.Microsoft_Windows_7_Enterprise.received.png" />
+    <Content Include="UiTests.ProgressTimerToNewTimeTest.Microsoft_Windows_7_Professional.approved.png" />
+    <Content Include="UiTests.ProgressTimerToNewTimeTest.Windows_7.approved.png" />
+    <Content Include="UiTests.ResetTimerTest.Microsoft_Windows_7_Enterprise.received.png" />
+    <Content Include="UiTests.ResetTimerTest.Microsoft_Windows_7_Professional.approved.png" />
+    <Content Include="UiTests.ResetTimerTest.Windows_7.approved.png" />
+    <Content Include="UiTests.TestListDisplayUpdatesWhenListUpdates.Microsoft_Windows_7_Enterprise.approved.png" />
+    <Content Include="UiTests.TestListDisplayUpdatesWhenListUpdates.Windows_7.approved.png" />
+    <Content Include="UiTests.ConstructorTest.Microsoft_Windows_8.1_Pro.approved.png" />
+    <Content Include="UiTests.ProgressTimerTest.Microsoft_Windows_8.1_Pro.approved.png" />
+    <Content Include="UiTests.ProgressTimerToEnd.Microsoft_Windows_8.1_Pro.approved.png" />
+    <Content Include="UiTests.ProgressTimerToNewTimeTest.Microsoft_Windows_8.1_Pro.approved.png" />
+    <Content Include="UiTests.ResetTimerTest.Microsoft_Windows_8.1_Pro.approved.png" />
+    <Content Include="UiTests.ConstructorTest.Microsoft_Windows_7_Enterprise.approved.png" />
+    <Content Include="UiTests.ProgressTimerTest.Microsoft_Windows_7_Enterprise.approved.png" />
+    <Content Include="UiTests.ProgressTimerToEnd.Microsoft_Windows_7_Enterprise.approved.png" />
+    <Content Include="UiTests.ProgressTimerToNewTimeTest.Microsoft_Windows_7_Enterprise.approved.png" />
+    <Content Include="UiTests.ResetTimerTest.Microsoft_Windows_7_Enterprise.approved.png" />
     <Content Include="ItemRingShould.ShouldAddNewItemToEndOfList.approved.txt">
       <DependentUpon>ItemRingShould.cs</DependentUpon>
     </Content>

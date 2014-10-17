@@ -9,7 +9,7 @@ using Rhino.Mocks;
 namespace DeveloperTimer.Tests
 {
     [TestClass]
-    public class Explortitory
+    public class UiTests
     {
         private readonly DateTime touDate = DateTime.Parse("6/28/3185 3:07:18AM");
 
