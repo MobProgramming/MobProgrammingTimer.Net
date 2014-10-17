@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using ApprovalUtilities.Persistence;
 
 namespace DeveloperTimer
 {
@@ -178,6 +179,11 @@ namespace DeveloperTimer
             if(ItemsChanged == null)
                 return;
             ItemsChanged(this, EventArgs.Empty);
+        }
+
+        public void Save(ISaver<IEnumerable<T>> saver)
+        {
+            saver.Save(items);
         }
     }
 }

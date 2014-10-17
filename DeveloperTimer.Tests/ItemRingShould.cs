@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using ApprovalTests;
+using ApprovalUtilities.Persistence;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DeveloperTimer.Tests
@@ -8,6 +10,15 @@ namespace DeveloperTimer.Tests
     public class ItemRingShould
     {
         private readonly string[] items = new[] {"one", "two", "three"};
+
+        [TestMethod]
+        public void ShouldSaveItemsToSaver()
+        {
+            var itemRing = new ItemRing<string>(items);
+            var saver = new MockSaver<IEnumerable<string>>();
+            itemRing.Save(saver);
+            Approvals.VerifyAll(saver.Saved.First(), "Saved");
+        }
 
         [TestMethod]
         public void ShouldTellWhatsInTheRing()

@@ -1,0 +1,3 @@
+﻿Saved[0] = one
+Saved[1] = two
+Saved[2] = three
