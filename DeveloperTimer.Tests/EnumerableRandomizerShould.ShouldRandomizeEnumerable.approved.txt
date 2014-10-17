@@ -1,4 +1,4 @@
-﻿Result[0] = three
-Result[1] = four
-Result[2] = two
-Result[3] = one
+﻿Result[0] = four
+Result[1] = two
+Result[2] = one
+Result[3] = three

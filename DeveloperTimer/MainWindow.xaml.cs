@@ -70,7 +70,7 @@ namespace DeveloperTimer
                 }
             }
 
-            var enumerableRandomizer = new EnumerableRandomizer();
+            var enumerableRandomizer = new EnumerableRandomizer(new Random());
 
             return enumerableRandomizer.Randomize(names);
         }

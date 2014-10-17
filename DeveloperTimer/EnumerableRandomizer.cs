@@ -8,10 +8,9 @@ namespace DeveloperTimer
     {
         private readonly GetRandomNumber randomNumberGenerator;
 
-        public EnumerableRandomizer()
+        public EnumerableRandomizer(Random random)
         {
-            var random = new Random();
-            randomNumberGenerator = max => random.Next(0, max);
+            randomNumberGenerator = max => random.Next(0, max+1);
         }
 
         public EnumerableRandomizer(GetRandomNumber randomNumberGenerator)
