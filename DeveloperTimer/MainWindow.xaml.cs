@@ -56,7 +56,9 @@ namespace DeveloperTimer
         private IEnumerable<string> LoadDefaultNames()
         {
             var names = new List<string>();
-            using (var stream = new StreamReader(GetLocalPath() + "Names.txt"))
+            var path = GetLocalPath() + "Names.txt";
+   
+            using (var stream = GetNamesFile(path))
             {
                 while (!stream.EndOfStream)
                 {
@@ -73,6 +75,20 @@ namespace DeveloperTimer
             var enumerableRandomizer = new EnumerableRandomizer(new Random());
 
             return enumerableRandomizer.Randomize(names);
+        }
+
+        private static StreamReader GetNamesFile(string path)
+        {
+            StreamReader stream;
+            if (!File.Exists(path))
+            {
+                stream = new StreamReader(File.Create(path));
+            }
+            else
+            {
+                stream = new StreamReader(path);
+            }
+            return stream;
         }
 
         private void InitializeTimer()
