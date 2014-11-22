@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Timers;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using ApprovalUtilities.Persistence;
 using Brush = System.Windows.Media.Brush;
 
 namespace DeveloperTimer
@@ -24,7 +25,7 @@ namespace DeveloperTimer
         private readonly Func<bool> isTopMost;
         private readonly ITimeController timeController;
         private readonly ItemRing<string> nameRing;
-        private readonly Thickness MinimizedThickness = new Thickness(3,3,3,25);
+        private readonly Thickness MinimizedThickness = new Thickness(3, 3, 3, 25);
 
         public MainWindow()
             : this(new TimeController(500), msg => MessageBox.Show(msg, "Diligence", MessageBoxButton.YesNo), () => true, new ItemRing<string>())
@@ -57,7 +58,7 @@ namespace DeveloperTimer
         {
             var names = new List<string>();
             var path = GetLocalPath() + "Names.txt";
-   
+
             using (var stream = GetNamesFile(path))
             {
                 while (!stream.EndOfStream)
@@ -79,15 +80,19 @@ namespace DeveloperTimer
 
         private static StreamReader GetNamesFile(string path)
         {
-            StreamReader stream;
-            if (!File.Exists(path))
+            var fileExistsLoader = new MockLoader<bool>(File.Exists(path));
+            var loaderFile = new LoaderFile(path);
+            Func<Stream> create = () => File.Create(path);
+            return TestableGetnamesFile(fileExistsLoader, loaderFile, create);
+        }
+
+        public static StreamReader TestableGetnamesFile(ILoader<bool> fileExistsLoader, ILoader<StreamReader> loaderFile, Func<Stream> create)
+        {
+            if (!fileExistsLoader.Load())
             {
-                stream = new StreamReader(File.Create(path));
+                using (create()) { }
             }
-            else
-            {
-                stream = new StreamReader(path);
-            }
+            var stream = loaderFile.Load();
             return stream;
         }
 

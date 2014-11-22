@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Timers;
 using System.Windows;
+using ApprovalTests;
 using ApprovalTests.Wpf;
+using ApprovalUtilities.Persistence;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rhino.Mocks;
 
@@ -75,6 +78,45 @@ namespace DeveloperTimer.Tests
             timeControllerParts.Item2[0](timeController, null);
 
             WpfApprovals.Verify(mainWindow);
+        }
+
+        [TestMethod]
+        public void TestLoadExistingFile()
+        {
+            ILoader<bool> mockFileExistLoader = new MockLoader<bool>(true);
+            var streamReader = new StreamReader(new MemoryStream());
+            ILoader<StreamReader> mockFileLoader = new Loader<StreamReader>(streamReader);
+            Func<Stream> mockCreater = () =>
+            {
+                throw new Exception();
+            };
+            using (
+                var testableGetnamesFile = MainWindow.TestableGetnamesFile(mockFileExistLoader, mockFileLoader,
+                    mockCreater))
+            {
+                Assert.AreEqual(streamReader, testableGetnamesFile);
+            }
+        }
+
+        [TestMethod]
+        public void TestLoadNonExistingFile()
+        {
+            var wasCalled = false;
+            ILoader<bool> mockFileExistLoader = new MockLoader<bool>(false);
+            var streamReader = new StreamReader(new MemoryStream());
+            ILoader<StreamReader> mockFileLoader = new Loader<StreamReader>(streamReader);
+            Func<Stream> mockCreater = () =>
+            {
+                wasCalled = true;
+                return null;
+            };
+            using (
+                var testableGetnamesFile = MainWindow.TestableGetnamesFile(mockFileExistLoader, mockFileLoader,
+                    mockCreater))
+            {
+                Assert.AreEqual(streamReader, testableGetnamesFile);
+            }
+            Assert.IsTrue(wasCalled,"Failed to create");
         }
 
         [TestMethod]

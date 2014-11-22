@@ -111,7 +111,9 @@
     </ApplicationDefinition>
     <Compile Include="EnumerableRandomizer.cs" />
     <Compile Include="GetRandomNumber.cs" />
+    <Compile Include="ILoaderFile.cs" />
     <Compile Include="ItemRing.cs" />
+    <Compile Include="LoaderFile.cs" />
     <Compile Include="TimeController.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -178,9 +180,6 @@
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Names.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Resources\appointment-new-3.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
