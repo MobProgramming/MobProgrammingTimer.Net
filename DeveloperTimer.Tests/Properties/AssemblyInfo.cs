@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using ApprovalTests.Namers;
 using ApprovalTests.Reporters;
 
 // General Information about an assembly is controlled through the following 
@@ -38,3 +39,5 @@ using Rhino.Mocks.Constraints;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+[assembly: UseApprovalSubdirectory("_approvals")]

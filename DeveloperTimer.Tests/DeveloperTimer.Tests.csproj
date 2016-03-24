@@ -93,31 +93,6 @@
     <Content Include="EnumerableRandomizerShould.ShouldRandomizeEnumerable.approved.txt">
       <DependentUpon>EnumerableRandomizerShould.cs</DependentUpon>
     </Content>
-    <Content Include="UiTests.ConstructorTest.Microsoft_Windows_7_Enterprise.received.png" />
-    <Content Include="UiTests.ConstructorTest.Microsoft_Windows_7_Professional.approved.png" />
-    <Content Include="UiTests.ProgressTimerTest.Microsoft_Windows_7_Enterprise.received.png" />
-    <Content Include="UiTests.ProgressTimerTest.Microsoft_Windows_7_Professional.approved.png" />
-    <Content Include="UiTests.ProgressTimerToEnd.Microsoft_Windows_7_Enterprise.received.png" />
-    <Content Include="UiTests.ProgressTimerToEnd.Microsoft_Windows_7_Professional.approved.png" />
-    <Content Include="UiTests.ProgressTimerToEnd.Windows_7.approved.png" />
-    <Content Include="UiTests.ProgressTimerToNewTimeTest.Microsoft_Windows_7_Enterprise.received.png" />
-    <Content Include="UiTests.ProgressTimerToNewTimeTest.Microsoft_Windows_7_Professional.approved.png" />
-    <Content Include="UiTests.ProgressTimerToNewTimeTest.Windows_7.approved.png" />
-    <Content Include="UiTests.ResetTimerTest.Microsoft_Windows_7_Enterprise.received.png" />
-    <Content Include="UiTests.ResetTimerTest.Microsoft_Windows_7_Professional.approved.png" />
-    <Content Include="UiTests.ResetTimerTest.Windows_7.approved.png" />
-    <Content Include="UiTests.TestListDisplayUpdatesWhenListUpdates.Microsoft_Windows_7_Enterprise.approved.png" />
-    <Content Include="UiTests.TestListDisplayUpdatesWhenListUpdates.Windows_7.approved.png" />
-    <Content Include="UiTests.ConstructorTest.Microsoft_Windows_8.1_Pro.approved.png" />
-    <Content Include="UiTests.ProgressTimerTest.Microsoft_Windows_8.1_Pro.approved.png" />
-    <Content Include="UiTests.ProgressTimerToEnd.Microsoft_Windows_8.1_Pro.approved.png" />
-    <Content Include="UiTests.ProgressTimerToNewTimeTest.Microsoft_Windows_8.1_Pro.approved.png" />
-    <Content Include="UiTests.ResetTimerTest.Microsoft_Windows_8.1_Pro.approved.png" />
-    <Content Include="UiTests.ConstructorTest.Microsoft_Windows_7_Enterprise.approved.png" />
-    <Content Include="UiTests.ProgressTimerTest.Microsoft_Windows_7_Enterprise.approved.png" />
-    <Content Include="UiTests.ProgressTimerToEnd.Microsoft_Windows_7_Enterprise.approved.png" />
-    <Content Include="UiTests.ProgressTimerToNewTimeTest.Microsoft_Windows_7_Enterprise.approved.png" />
-    <Content Include="UiTests.ResetTimerTest.Microsoft_Windows_7_Enterprise.approved.png" />
     <Content Include="ItemRingShould.ShouldAddNewItemToEndOfList.approved.txt">
       <DependentUpon>ItemRingShould.cs</DependentUpon>
     </Content>
@@ -142,7 +117,39 @@
     <Content Include="Resources\plop.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="_approvals\EnumerableRandomizerShould.ShouldRandomizeEnumerable.approved.txt" />
+    <Content Include="_approvals\ItemRingShould.ShouldAddNewItemToEndOfList.approved.txt" />
+    <Content Include="_approvals\ItemRingShould.ShouldChangeListIfFirstItemIsMovedDown.approved.txt" />
+    <Content Include="_approvals\ItemRingShould.ShouldChangeListIfLastItemIsMovedUp.approved.txt" />
+    <Content Include="_approvals\ItemRingShould.ShouldCorrectlyWrapOnOnverFlowCausedByMovingDown.approved.txt" />
+    <Content Include="_approvals\ItemRingShould.ShouldCorrectlyWrapOnOverFlowCausedByMovingUp.approved.txt" />
+    <Content Include="_approvals\ItemRingShould.ShouldNotChangeListAfterIncrement.approved.txt" />
+    <Content Include="_approvals\ItemRingShould.ShouldSaveItemsToSaver.approved.txt" />
+    <Content Include="_approvals\ItemRingShould.ShouldTellWhatsInTheRing.approved.txt" />
+    <Content Include="_approvals\UiTests.ConstructorTest.Microsoft_Windows_7_Enterprise.approved.png" />
+    <Content Include="_approvals\UiTests.ConstructorTest.Microsoft_Windows_7_Professional.approved.png" />
+    <Content Include="_approvals\UiTests.ConstructorTest.Microsoft_Windows_8.1_Pro.approved.png" />
+    <Content Include="_approvals\UiTests.ConstructorTest.Windows_7.approved.png" />
+    <Content Include="_approvals\UiTests.ProgressTimerTest.Microsoft_Windows_7_Enterprise.approved.png" />
+    <Content Include="_approvals\UiTests.ProgressTimerTest.Microsoft_Windows_7_Professional.approved.png" />
+    <Content Include="_approvals\UiTests.ProgressTimerTest.Microsoft_Windows_8.1_Pro.approved.png" />
+    <Content Include="_approvals\UiTests.ProgressTimerTest.Windows_7.approved.png" />
+    <Content Include="_approvals\UiTests.ProgressTimerToEnd.Microsoft_Windows_7_Enterprise.approved.png" />
+    <Content Include="_approvals\UiTests.ProgressTimerToEnd.Microsoft_Windows_7_Professional.approved.png" />
+    <Content Include="_approvals\UiTests.ProgressTimerToEnd.Microsoft_Windows_8.1_Pro.approved.png" />
+    <Content Include="_approvals\UiTests.ProgressTimerToEnd.Windows_7.approved.png" />
+    <Content Include="_approvals\UiTests.ProgressTimerToNewTimeTest.Microsoft_Windows_7_Enterprise.approved.png" />
+    <Content Include="_approvals\UiTests.ProgressTimerToNewTimeTest.Microsoft_Windows_7_Professional.approved.png" />
+    <Content Include="_approvals\UiTests.ProgressTimerToNewTimeTest.Microsoft_Windows_8.1_Pro.approved.png" />
+    <Content Include="_approvals\UiTests.ProgressTimerToNewTimeTest.Windows_7.approved.png" />
+    <Content Include="_approvals\UiTests.ResetTimerTest.Microsoft_Windows_7_Enterprise.approved.png" />
+    <Content Include="_approvals\UiTests.ResetTimerTest.Microsoft_Windows_7_Professional.approved.png" />
+    <Content Include="_approvals\UiTests.ResetTimerTest.Microsoft_Windows_8.1_Pro.approved.png" />
+    <Content Include="_approvals\UiTests.ResetTimerTest.Windows_7.approved.png" />
+    <Content Include="_approvals\UiTests.TestListDisplayUpdatesWhenListUpdates.Microsoft_Windows_7_Enterprise.approved.png" />
+    <Content Include="_approvals\UiTests.TestListDisplayUpdatesWhenListUpdates.Windows_7.approved.png" />
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
